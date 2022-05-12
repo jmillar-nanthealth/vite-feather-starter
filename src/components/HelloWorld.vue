@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { FeatherButton } from "@featherds/button";
 import { ref } from "vue";
 
 defineProps({
@@ -6,6 +7,8 @@ defineProps({
 });
 
 const count = ref(0);
+const counter1 = ref(0);
+const counter2 = ref(0);
 </script>
 
 <template>
@@ -31,6 +34,30 @@ const count = ref(0);
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
   </p>
+
+  <section class="testing" id="testing1">
+    <button class="no-op">This does nothing</button>
+    <button class="action" @click="counter1++">Add one</button>
+    <span class="result1">{{ counter1 }}</span>
+  </section>
+  <section class="testing" id="testing2">
+    <FeatherButton class="no-op" text>This does nothing</FeatherButton>
+    <FeatherButton class="action" primary @click="counter2++"
+      >Add one</FeatherButton
+    >
+    <span class="result2">{{ counter2 }}</span>
+  </section>
 </template>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.testing {
+  button {
+    margin-left: 260px;
+  }
+  span {
+    display: block;
+    margin: 20px;
+    margin-bottom: 40px;
+  }
+}
+</style>
